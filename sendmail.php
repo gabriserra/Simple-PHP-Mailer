@@ -136,8 +136,7 @@ function substitute_fields($message, $company) {
 function send_email($sender, $recipent, $subject, $content) {
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-    $headers[] = 'To: ' . $recipent['name'] . ' <' . $recipent['email'] . '>';
-    $headers[] = 'From: ' . $sender['name'] . ' <' . $sender['email'] . '>';
+    $headers[] = 'From:' . $sender['email'];
 
     if(!mail($recipent['email'], $subject, $content, implode("\r\n", $headers)))
         launch_error("Was not possible to send an email to " . $recipent['email'] . ". Retry later.");
